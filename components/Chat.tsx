@@ -388,7 +388,7 @@ const Chat = () => {
           'x-api-key': process.env.LANGFLOW_API_KEY || '',
         },
         body: JSON.stringify({
-          model: 'b81e9b6e-babd-4d49-8c64-a8cf352c0f91',
+          model: process.env.LANGFLOW_FLOW_ID || 'b81e9b6e-babd-4d49-8c64-a8cf352c0f91',
           input: text,
           stream: true,
           ...(previousResponseId
