@@ -2,13 +2,12 @@ services:
   portfolio-app:
     image: matigarowel10/portfolio:app
     container_name: portfolio-app
+    env_file:
+      - .env.local
     build:
       context: .
       args:
-        NEXT_PUBLIC_GITHUB_USERNAME: ${NEXT_PUBLIC_GITHUB_USERNAME:?Set NEXT_PUBLIC_GITHUB_USERNAME}
-        NEXT_PUBLIC_OPENAI_API_KEY: ${NEXT_PUBLIC_OPENAI_API_KEY:-}
+        GITHUB_USERNAME: matigarowel
     restart: unless-stopped
     ports:
       - "3006:3000"
-    environment:
-      DEV_TO_API_KEY: ${DEV_TO_API_KEY:-}

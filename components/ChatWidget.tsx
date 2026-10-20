@@ -47,7 +47,7 @@ const ChatWidget = ({ className }: ChatWidgetProps) => {
       <langflow-chat
         host_url="http://localhost:37860"
         flow_id="b81e9b6e-babd-4d49-8c64-a8cf352c0f91"
-        api_key={process.env.NEXT_PUBLIC_OPENAI_API_KEY}
+        api_key={process.env.LANGFLOW_API_KEY}
       />
     </div>
   );

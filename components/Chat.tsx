@@ -385,7 +385,7 @@ const Chat = () => {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'text/event-stream',
-          'x-api-key': process.env.NEXT_PUBLIC_OPENAI_API_KEY || '',
+          'x-api-key': process.env.LANGFLOW_API_KEY || '',
         },
         body: JSON.stringify({
           model: 'b81e9b6e-babd-4d49-8c64-a8cf352c0f91',
