@@ -28,13 +28,6 @@
   cursor: pointer;
 }
 
-.menuItem {
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-}
-
 .menuItem:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
@@ -69,7 +62,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  .items > * {
+  .items p {
     display: none;
   }
   .title {

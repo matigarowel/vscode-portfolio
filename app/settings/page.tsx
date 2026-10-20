@@ -1,37 +1,30 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useState, useEffect } from 'react';
 import { VscColorMode } from 'react-icons/vsc';
 
-import { THEMES, THEME_CHANGE_EVENT } from '@/lib/themes';
+import { THEMES } from '@/lib/themes';
 import ThemeInfo from '@/components/ThemeInfo';
 
 import styles from '@/styles/SettingsPage.module.css';
 
-const subscribe = (onChange: () => void) => {
-  window.addEventListener(THEME_CHANGE_EVENT, onChange);
-  window.addEventListener('storage', onChange);
-  return () => {
-    window.removeEventListener(THEME_CHANGE_EVENT, onChange);
-    window.removeEventListener('storage', onChange);
-  };
-};
-
 const SettingsPage = () => {
-  // Saved theme lives in localStorage, so it's only readable on the client
-  const activeTheme = useSyncExternalStore(
-    subscribe,
-    () => localStorage.getItem('theme') || 'github-dark',
-    () => null
-  );
+  const [activeTheme, setActiveTheme] = useState('github-dark');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'github-dark';
+    setActiveTheme(savedTheme);
+    setIsLoaded(true);
+  }, []);
 
   const handleThemeSelect = (theme: string) => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+    setActiveTheme(theme);
   };
 
-  if (!activeTheme) {
+  if (!isLoaded) {
     return null;
   }
 

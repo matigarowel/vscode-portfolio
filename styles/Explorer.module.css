@@ -1,6 +1,7 @@
 .explorer {
   background: var(--explorer-bg);
-  width: 18vw;
+  width: 100%;
+  height: 100%;
   color: rgb(225, 228, 232);
   font-family: 'Source Sans Pro', sans-serif;
   border-right: 1px solid var(--explorer-border);
@@ -51,10 +52,6 @@
 }
 
 .file:hover {
-  background: var(--explorer-hover-bg);
-}
-
-.activeFile {
   background: var(--explorer-hover-bg);
 }
 

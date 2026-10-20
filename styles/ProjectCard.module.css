@@ -97,12 +97,26 @@
   object-fit: contain;
 }
 
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .title {
   margin: 0;
   font-size: 17px;
   font-weight: 600;
   color: var(--text-color);
   transition: color 0.2s ease;
+}
+
+.category {
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .card:hover .title {

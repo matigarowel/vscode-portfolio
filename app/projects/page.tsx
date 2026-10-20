@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { VscFolderOpened, VscGithub, VscLinkExternal } from 'react-icons/vsc';
+import { VscFolderOpened, VscLinkExternal } from 'react-icons/vsc';
 
 import ProjectCard from '@/components/ProjectCard';
-import { projects, getSocial } from '@/portfolio.config';
+import { projects } from '@/data/projects';
 
 import styles from '@/styles/ProjectsPage.module.css';
 
@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 
 const ProjectsPage = () => {
   const totalProjects = projects.length;
-  const github = getSocial('github');
 
   return (
     <div className={styles.page}>
@@ -30,8 +29,9 @@ const ProjectsPage = () => {
           <div className={styles.headerContent}>
             <h1 className={styles.title}>Featured Work</h1>
             <p className={styles.subtitle}>
-              A curated collection of projects I&apos;ve built. Each represents 
-              a unique challenge and learning experience.
+              Personal projects and professional applications spanning
+              full-stack development, cloud operations, and AI-assisted
+              engineering.
             </p>
           </div>
         </header>
@@ -46,21 +46,13 @@ const ProjectsPage = () => {
           ))}
         </div>
 
-        {github && (
-          <footer className={styles.footer}>
-            <div className={styles.footerLine} />
-            <a
-              href={`${github.href}?tab=repositories`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.footerLink}
-            >
-              <VscGithub size={18} />
-              <span>Explore more on GitHub</span>
-              <VscLinkExternal size={14} />
-            </a>
-          </footer>
-        )}
+        <footer className={styles.footer}>
+          <div className={styles.footerLine} />
+          <a href="/contact" className={styles.footerLink}>
+            <span>Discuss a project</span>
+            <VscLinkExternal size={14} />
+          </a>
+        </footer>
       </div>
     </div>
   );

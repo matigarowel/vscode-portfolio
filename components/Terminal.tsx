@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react';
 import { VscTerminal, VscClose } from 'react-icons/vsc';
 
 import { THEME_KEYS } from '@/lib/themes';
-import { profile, skills, projects, socials, fileRoutes } from '@/portfolio.config';
 import styles from '@/styles/Terminal.module.css';
 
 interface TerminalLine {
@@ -30,33 +29,35 @@ const commands: Record<string, () => string[]> = {
     '  echo      - Echo text (usage: echo <text>)',
   ],
   about: () => [
-    `Hi, I'm ${profile.name.split(' ')[0]}!`,
-    `${profile.role} · ${profile.location}`,
-    '',
-    ...profile.bio,
+    "Hi, I'm Nitin!",
+    'A passionate full-stack developer who loves building beautiful,',
+    'functional web applications. This portfolio is styled like VS Code',
+    'because I spend most of my time here anyway.',
   ],
-  skills: () => {
-    const width = Math.max(...Object.keys(skills).map(c => c.length)) + 2;
-    return [
-      'Technical Skills:',
-      ...Object.entries(skills).map(
-        ([category, items]) => `  ${`${category}:`.padEnd(width)}${items.join(', ')}`
-      ),
-    ];
-  },
+  skills: () => [
+    'Technical Skills:',
+    '  Languages:  TypeScript, JavaScript, Python, Go, Rust',
+    '  Frontend:   React, Next.js, Vue, Tailwind CSS',
+    '  Backend:    Node.js, Express, FastAPI, GraphQL',
+    '  Database:   PostgreSQL, MongoDB, Redis',
+    '  DevOps:     Docker, Kubernetes, AWS, GitHub Actions',
+    '  Tools:      VS Code, Git, Figma, Linux',
+  ],
   projects: () => [
     'Featured Projects:',
-    ...projects.map((p, i) => `  ${i + 1}. ${p.title} - ${p.description}`),
+    '  1. vscode-portfolio - This portfolio you are viewing!',
+    '  2. Various open-source contributions',
+    '  3. Full-stack web applications',
     '',
     'Visit the Projects tab for more details.',
   ],
-  contact: () => {
-    const width = Math.max(...socials.map(s => s.id.length)) + 2;
-    return [
-      'Contact Information:',
-      ...socials.map(s => `  ${`${s.id}:`.padEnd(width)}${s.handle}`),
-    ];
-  },
+  contact: () => [
+    'Contact Information:',
+    '  Email:    hello@example.com',
+    '  GitHub:   github.com/itsnitinr',
+    '  Twitter:  @itsnitinr',
+    '  LinkedIn: linkedin.com/in/itsnitinr',
+  ],
   themes: () => [
     'Available themes:',
     ...THEME_KEYS.map((theme, i) => `  ${theme}${i === 0 ? '  (default)' : ''}`),
@@ -65,7 +66,7 @@ const commands: Record<string, () => string[]> = {
   ],
   date: () => [new Date().toString()],
   whoami: () => ['visitor@portfolio ~ exploring awesome projects'],
-  ls: () => [fileRoutes.map(route => route.file.name).join('  ')],
+  ls: () => ['about/', 'projects/', 'skills/', 'contact/', 'README.md'],
   pwd: () => ['/home/visitor/portfolio'],
 };
 

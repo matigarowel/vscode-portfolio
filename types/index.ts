@@ -13,8 +13,9 @@ export interface Project {
   title: string;
   description: string;
   logo: string;
-  link: string;
+  link?: string;
   slug: string;
+  category: 'Personal' | 'Professional';
 }
 
 export interface Repo {

@@ -143,15 +143,8 @@
 }
 
 .itemDescription {
-  margin-left: 8px;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-color-muted, #6e7681);
-}
-
-.match {
-  background: none;
-  color: var(--accent-color);
-  font-weight: 600;
 }
 
 .shortcut {

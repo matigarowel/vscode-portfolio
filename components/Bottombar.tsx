@@ -8,8 +8,6 @@ import {
 } from 'react-icons/vsc';
 import { SiNextdotjs } from 'react-icons/si';
 
-import { profile } from '@/portfolio.config';
-
 import styles from '@/styles/Bottombar.module.css';
 
 interface BottombarProps {
@@ -22,7 +20,7 @@ const Bottombar = ({ onTerminalToggle, isTerminalOpen }: BottombarProps) => {
     <footer className={styles.bottomBar}>
       <div className={styles.container}>
         <a
-          href={profile.repository}
+          href="https://github.com/itsnitinr/vscode-portfolio"
           target="_blank"
           rel="noreferrer noopener"
           className={styles.section}
@@ -38,16 +36,13 @@ const Bottombar = ({ onTerminalToggle, isTerminalOpen }: BottombarProps) => {
         </div>
       </div>
       <div className={styles.container}>
-        <button
-          type="button"
+        <div
           className={`${styles.section} ${isTerminalOpen ? styles.active : ''}`}
           onClick={onTerminalToggle}
           title="Toggle Terminal (Ctrl+`)"
-          aria-label="Toggle Terminal"
-          aria-pressed={isTerminalOpen}
         >
           <VscTerminal className={styles.icon} />
-        </button>
+        </div>
         <div className={styles.section}>
           <SiNextdotjs className={styles.icon} />
           <p>Powered by Next.js</p>

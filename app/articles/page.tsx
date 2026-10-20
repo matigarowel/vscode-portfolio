@@ -1,10 +1,8 @@
 import { Metadata } from 'next';
-import { cacheLife } from 'next/cache';
 import { VscBook, VscLinkExternal, VscGlobe } from 'react-icons/vsc';
 
 import ArticleCard from '@/components/ArticleCard';
 
-import { getSocial } from '@/portfolio.config';
 import { Article } from '@/types';
 
 import styles from '@/styles/ArticlesPage.module.css';
@@ -13,10 +11,9 @@ export const metadata: Metadata = {
   title: 'Articles',
 };
 
-async function getArticles(): Promise<Article[]> {
-  'use cache';
-  cacheLife('minutes');
+export const revalidate = 60;
 
+async function getArticles(): Promise<Article[]> {
   const res = await fetch(
     'https://dev.to/api/articles/me/published?per_page=6',
     {
@@ -37,7 +34,6 @@ async function getArticles(): Promise<Article[]> {
 export default async function ArticlesPage() {
   const articles = await getArticles();
   const totalViews = articles.reduce((sum, article) => sum + article.page_views_count, 0);
-  const devto = getSocial('devto');
 
   return (
     <div className={styles.page}>
@@ -70,17 +66,15 @@ export default async function ArticlesPage() {
             </div>
           </div>
 
-          {devto && (
-            <a
-              href={devto.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.profileLink}
-            >
-              <span>DEV.to</span>
-              <VscLinkExternal size={14} />
-            </a>
-          )}
+          <a 
+            href="https://dev.to/itsnitinr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.profileLink}
+          >
+            <span>DEV.to</span>
+            <VscLinkExternal size={14} />
+          </a>
         </header>
 
         <div className={styles.articlesList}>

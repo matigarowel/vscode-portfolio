@@ -1,23 +1,34 @@
 import type { Metadata } from 'next';
 
 import Layout from '@/components/Layout';
-import { profile } from '@/portfolio.config';
 
 import '@/styles/globals.css';
 import '@/styles/themes.css';
 
 export const metadata: Metadata = {
   title: {
-    default: `${profile.name} | Portfolio`,
-    template: `${profile.name} | %s`,
+    default: 'Rowel Matiga | Portfolio',
+    template: 'Rowel Matiga | %s',
   },
-  description: profile.metaDescription,
-  keywords: profile.keywords,
+  description:
+    "Rowel Matiga is an avid full stack web developer building websites and applications you'd love to use",
+  keywords: [
+    'rowel matiga',
+    'matiga',
+    'rowel',
+    'web developer portfolio',
+    'rowel web developer',
+    'rowel developer',
+    'mern stack',
+    'rowel matiga portfolio',
+    'vscode-portfolio',
+  ],
   openGraph: {
-    title: `${profile.name}'s Portfolio`,
-    description: profile.ogDescription,
-    images: [profile.ogImage],
-    url: profile.siteUrl,
+    title: "Rowel Matiga's Portfolio",
+    description:
+      "A full-stack developer building websites that you'd like to use.",
+    images: ['https://imgur.com/4zi5KkQ.png'],
+    url: 'https://vscode-portfolio.vercel.app',
   },
   twitter: {
     card: 'summary_large_image',
@@ -43,7 +54,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>
+      <body style={{ overflow: 'hidden' }}>
         <Layout>{children}</Layout>
       </body>
     </html>

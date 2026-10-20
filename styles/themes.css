@@ -26,7 +26,6 @@
   --terminal-bg: #1f2428;
   --terminal-header-bg: #1f2428;
   --terminal-border: #1b1f23;
-  --calendar-empty: #2f363d;
 }
 
 /* Dracula */
@@ -57,7 +56,6 @@
   --terminal-bg: #21222c;
   --terminal-header-bg: #191a21;
   --terminal-border: #191a21;
-  --calendar-empty: #3c3d51;
 }
 
 /* Ayu Dark */
@@ -88,7 +86,6 @@
   --terminal-bg: #0a0e14;
   --terminal-header-bg: #0a0e14;
   --terminal-border: transparent;
-  --calendar-empty: #1a1f29;
 }
 
 /* Ayu Mirage */
@@ -119,7 +116,6 @@
   --terminal-bg: #1f2430;
   --terminal-header-bg: #1f2430;
   --terminal-border: transparent;
-  --calendar-empty: #2a3243;
 }
 
 /* Nord */
@@ -150,7 +146,6 @@
   --terminal-bg: #2e3440;
   --terminal-header-bg: #3b4252;
   --terminal-border: transparent;
-  --calendar-empty: #3b4252;
 }
 
 /* Night Owl */
@@ -181,5 +176,4 @@
   --terminal-bg: #011627;
   --terminal-header-bg: #011627;
   --terminal-border: #262a39;
-  --calendar-empty: #0b2942;
 }

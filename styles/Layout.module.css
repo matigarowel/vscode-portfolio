@@ -14,8 +14,44 @@
   min-height: 0;
 }
 
+.explorerPane,
+.chatPane {
+  flex: 0 0 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.splitter {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 4px;
+  width: 4px;
+  margin: 0 -2px;
+  cursor: col-resize;
+  touch-action: none;
+  outline: none;
+}
+
+.splitter::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1px;
+  width: 2px;
+  background: transparent;
+  content: '';
+}
+
+.splitter:hover::after,
+.splitter:focus-visible::after {
+  background: var(--accent-color);
+}
+
+.splitter:active::after {
+  background: var(--accent-color);
+}
+
 .editorContainer {
-  width: 100%;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -60,6 +96,12 @@
 }
 
 @media screen and (max-width: 600px) {
+  .explorerPane,
+  .chatPane,
+  .splitter {
+    display: none;
+  }
+
   .content {
     padding: 2rem 1rem;
   }

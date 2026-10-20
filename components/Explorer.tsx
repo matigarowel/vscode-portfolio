@@ -1,27 +1,48 @@
-'use client';
-
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { useState } from 'react';
 import { VscChevronRight } from 'react-icons/vsc';
 
-import FileIcon from '@/components/FileIcon';
-import { openTab, pinTab, useEditorTabs } from '@/lib/editorTabs';
-import { fileRoutes } from '@/portfolio.config';
-
 import styles from '@/styles/Explorer.module.css';
 
-const Explorer = ({ hidden = false }: { hidden?: boolean }) => {
-  const pathname = usePathname();
-  const { tabs, hydrated } = useEditorTabs();
+const explorerItems = [
+  {
+    name: 'home.tsx',
+    path: '/',
+    icon: '/logos/react_icon.svg',
+  },
+  {
+    name: 'about.html',
+    path: '/about',
+    icon: '/logos/html_icon.svg',
+  },
+  {
+    name: 'contact.css',
+    path: '/contact',
+    icon: '/logos/css_icon.svg',
+  },
+  {
+    name: 'projects.js',
+    path: '/projects',
+    icon: '/logos/js_icon.svg',
+  },
+  {
+    name: 'articles.json',
+    path: '/articles',
+    icon: '/logos/json_icon.svg',
+  },
+  {
+    name: 'github.md',
+    path: '/github',
+    icon: '/logos/markdown_icon.svg',
+  },
+];
+
+const Explorer = () => {
   const [portfolioOpen, setPortfolioOpen] = useState(true);
 
-  // Only highlight the current file while its tab is open
-  const activePath =
-    !hydrated || tabs.some(tab => tab.path === pathname) ? pathname : null;
-
   return (
-    <div className={styles.explorer} hidden={hidden}>
+    <div className={styles.explorer}>
       <p className={styles.title}>Explorer</p>
       <div>
         <input
@@ -42,19 +63,12 @@ const Explorer = ({ hidden = false }: { hidden?: boolean }) => {
           className={styles.files}
           style={portfolioOpen ? { display: 'block' } : { display: 'none' }}
         >
-          {fileRoutes.map(route => (
-            <Link
-              href={route.path}
-              key={route.path}
-              className={`${styles.file} ${
-                route.path === activePath ? styles.activeFile : ''
-              }`}
-              // Single click previews the file, double click keeps it open
-              onClick={() => openTab(route.path, { after: pathname })}
-              onDoubleClick={() => pinTab(route.path)}
-            >
-              <FileIcon route={route} />
-              <p>{route.file.name}</p>
+          {explorerItems.map((item) => (
+            <Link href={item.path} key={item.name}>
+              <div className={styles.file}>
+                <Image src={item.icon} alt={item.name} height={18} width={18} />{' '}
+                <p>{item.name}</p>
+              </div>
             </Link>
           ))}
         </div>
