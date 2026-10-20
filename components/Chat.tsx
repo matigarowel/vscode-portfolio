@@ -380,7 +380,7 @@ const Chat = () => {
     const toolCalls: ToolCall[] = [];
 
     try {
-      const response = await fetch('http://localhost:37860/api/v1/responses', {
+      const response = await fetch(`${process.env.LANGFLOW_ENDPOINT || 'http://localhost:37860'}/api/v1/responses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
