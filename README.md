@@ -21,6 +21,10 @@ For other features and themes suggestions, please open an issue.
 
 For fetching your articles from dev.to, create an `.env.local` file inside the project directory. See `.env.example` for the required variables.
 
+To enable Google Analytics 4, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` to your GA4 measurement ID (for example, `G-XXXXXXXXXX`). This is a public ID, not a secret. For Docker builds, pass it through `.env.local`; for GitHub Actions deployments, configure it as the repository variable `NEXT_PUBLIC_GA_MEASUREMENT_ID`. If unset, analytics is disabled.
+
+To enable Microsoft Clarity, set `NEXT_PUBLIC_CLARITY_PROJECT_ID` to your Clarity project ID. For Docker builds, add it to `.env.local`; for GitHub Actions deployments, configure it as the repository variable `NEXT_PUBLIC_CLARITY_PROJECT_ID`. The ID is public, and Clarity is disabled when it is unset.
+
 The chat panel embeds Langflow directly. If the flow requires an API key, set `NEXT_PUBLIC_LANGFLOW_API_KEY` in `.env.local`. This key is sent to the browser by the embedded chat, so use a key intended for public client-side use and restrict it appropriately.
 
 ## Running Development Server

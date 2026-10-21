@@ -1,14 +1,50 @@
 .tabs {
   display: flex;
-  /* flex-wrap: wrap; */
+  min-width: 0;
+  align-items: stretch;
   background: var(--tabs-bg);
-  overflow-x: auto;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 900px) {
-  .tabs {
-    width: 78vw;
-  }
+.tabScroller {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.tabScroller::-webkit-scrollbar {
+  display: none;
+}
+
+.tabTrack {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+}
+
+.tabTrack > a {
+  flex: 0 0 auto;
+}
+
+.scrollButton {
+  display: grid;
+  width: 28px;
+  flex: 0 0 28px;
+  place-items: center;
+  border: 0;
+  color: var(--text-color);
+  background: var(--tabs-bg);
+  cursor: pointer;
+}
+
+.scrollButton:hover,
+.scrollButton:focus-visible {
+  color: var(--accent-color);
+  background: var(--explorer-hover-bg);
+  outline: none;
 }
 
 @media screen and (max-width: 600px) {
