@@ -25,6 +25,9 @@ jobs:
           push: true
           build-args: |
             NEXT_PUBLIC_GITHUB_USERNAME=matigarowel
+            NEXT_PUBLIC_LANGFLOW_API_KEY=${{ secrets.NEXT_PUBLIC_LANGFLOW_API_KEY }}
+            NEXT_PUBLIC_LANGFLOW_ENDPOINT=${{ secrets.NEXT_PUBLIC_LANGFLOW_ENDPOINT }}
+            NEXT_PUBLIC_LANGFLOW_FLOW_ID=${{ secrets.NEXT_PUBLIC_LANGFLOW_FLOW_ID }}
           tags: |
             ${{ github.ref_name == 'main' && 'matigarowel10/portfolio:app' || '' }}
   deploy:
