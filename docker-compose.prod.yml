@@ -6,8 +6,6 @@ services:
       - .env.prod
     build:
       context: .
-      args:
-        NEXT_PUBLIC_GITHUB_USERNAME: matigarowel
     restart: unless-stopped
     ports:
       - "3006:3000"
