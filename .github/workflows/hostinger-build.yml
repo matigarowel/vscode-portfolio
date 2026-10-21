@@ -23,8 +23,6 @@ jobs:
         with:
           context: .
           push: true
-          build-args: |
-            GITHUB_USERNAME=matigarowel
           tags: |
             ${{ github.ref_name == 'main' && 'matigarowel10/portfolio:app' || '' }}
   deploy:
@@ -41,7 +39,7 @@ jobs:
           host: ${{ secrets.HOSTINGER_IP }}
           username: ${{ secrets.HOSTINGER_USER }}
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
-          source: docker-compose.yml
+          source: docker-compose.prod.yml
           target: ~/deploy/portfolio/portfolio-app/
 
       - name: Deploy application on VPS
@@ -57,5 +55,5 @@ jobs:
 
             
             echo "Deploying..."
-            docker compose -f docker-compose.yml -p portfolio-app pull
-            docker compose -f docker-compose.yml -p portfolio-app up -d
+            docker compose -f docker-compose.prod.yml -p portfolio-app pull
+            docker compose -f docker-compose.prod.yml -p portfolio-app up -d

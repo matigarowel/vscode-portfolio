@@ -37,7 +37,7 @@ All VSCode related components can be found in the `components` folder. To change
 
 ## Deploy with Docker
 
-The GitHub profile username (`matigarowel`) is set as a build argument in the Docker and GitHub Actions configuration. Create `.env.local` for optional runtime integrations such as `LANGFLOW_API_KEY` and `DEV_TO_API_KEY`:
+Create `.env.local` for optional runtime integrations such as `LANGFLOW_API_KEY` and `DEV_TO_API_KEY`:
 
 ```bash
 docker compose --env-file .env.local up --build -d

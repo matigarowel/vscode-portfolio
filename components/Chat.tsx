@@ -380,15 +380,15 @@ const Chat = () => {
     const toolCalls: ToolCall[] = [];
 
     try {
-      const response = await fetch(`${process.env.LANGFLOW_ENDPOINT || 'http://localhost:37860'}/api/v1/responses`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_LANGFLOW_ENDPOINT}/api/v1/responses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'text/event-stream',
-          'x-api-key': process.env.LANGFLOW_API_KEY || '',
+          'x-api-key': process.env.NEXT_PUBLIC_LANGFLOW_API_KEY || '',
         },
         body: JSON.stringify({
-          model: process.env.LANGFLOW_FLOW_ID || 'b81e9b6e-babd-4d49-8c64-a8cf352c0f91',
+          model: process.env.NEXT_PUBLIC_LANGFLOW_FLOW_ID || 'b81e9b6e-babd-4d49-8c64-a8cf352c0f91',
           input: text,
           stream: true,
           ...(previousResponseId

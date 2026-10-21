@@ -15,14 +15,14 @@ export const metadata: Metadata = {
 export const revalidate = 600;
 
 async function getGithubData() {
-  const username = process.env.GITHUB_USERNAME;
+  const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME;
 
   if (!username) {
-    throw new Error("GITHUB_USERNAME environment variable is missing");
+    throw new Error("NEXT_PUBLIC_GITHUB_USERNAME environment variable is missing");
   }
   
   const userRes = await fetch(
-    `https://api.github.com/users/${process.env.GITHUB_USERNAME}`
+    `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`
   );
   if (!userRes.ok) {
     throw new Error(`Failed to fetch user: ${userRes.status}`);
@@ -30,7 +30,7 @@ async function getGithubData() {
   const user: User = await userRes.json();
 
   const repoRes = await fetch(
-    `https://api.github.com/users/${process.env.GITHUB_USERNAME}/repos?sort=pushed&per_page=6`
+    `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/repos?sort=pushed&per_page=6`
   );
   if (!repoRes.ok) {
     throw new Error(`Failed to fetch repos: ${repoRes.status}`);
@@ -127,7 +127,7 @@ export default async function GithubPage() {
           <h2 className={styles.sectionTitle}>Contribution Activity</h2>
           <div className={styles.contributions}>
             <GitHubCalendar
-              username={process.env.GITHUB_USERNAME!}
+              username={process.env.NEXT_PUBLIC_GITHUB_USERNAME!}
               hideColorLegend
               hideMonthLabels
               colorScheme="dark"

@@ -1,0 +1,16 @@
+services:
+  portfolio-app:
+    image: matigarowel10/portfolio:app
+    container_name: portfolio-app
+    env_file:
+      - .env.prod
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - "3006:3000"
+    networks:
+      - backend
+
+networks:
+  backend:

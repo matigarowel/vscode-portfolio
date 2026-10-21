@@ -7,7 +7,7 @@ services:
     build:
       context: .
       args:
-        GITHUB_USERNAME: matigarowel
+        NEXT_PUBLIC_GITHUB_USERNAME: matigarowel
     restart: unless-stopped
     ports:
       - "3006:3000"
@@ -16,4 +16,3 @@ services:
 
 networks:
   backend:
-    external: true
