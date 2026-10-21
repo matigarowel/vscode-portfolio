@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
-import { VscAdd, VscSend, VscSparkle } from 'react-icons/vsc';
+import { VscAdd, VscClose, VscSend, VscSparkle } from 'react-icons/vsc';
 
 import styles from '@/styles/Chat.module.css';
 import MarkdownMessage from './MarkdownMessage';
@@ -65,6 +65,10 @@ function serializeToolOutput(value: unknown): string | undefined {
   }
 
   return results ? serializeArguments(results) : undefined;
+}
+
+interface ChatProps {
+  onClose?: () => void;
 }
 
 function extractResponseText(result: unknown): string {
@@ -346,7 +350,7 @@ function getResponseError(result: unknown): string | null {
   return null;
 }
 
-const Chat = () => {
+const Chat = ({ onClose }: ChatProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [draft, setDraft] = useState('');
   const [previousResponseId, setPreviousResponseId] = useState<string | null>(null);
@@ -608,16 +612,29 @@ const Chat = () => {
     <aside className={styles.chat} aria-label="Chat">
       <header className={styles.header}>
         <p className={styles.title}>CHAT</p>
-        <button
-          className={styles.iconButton}
-          type="button"
-          aria-label="New chat"
-          title="New chat"
-          onClick={startNewChat}
-          disabled={isSending || messages.length === 0}
-        >
-          <VscAdd />
-        </button>
+        <div className={styles.headerActions}>
+          <button
+            className={styles.iconButton}
+            type="button"
+            aria-label="New chat"
+            title="New chat"
+            onClick={startNewChat}
+            disabled={isSending || messages.length === 0}
+          >
+            <VscAdd />
+          </button>
+          {onClose && (
+            <button
+              className={`${styles.iconButton} ${styles.mobileCloseButton}`}
+              type="button"
+              aria-label="Close chat"
+              title="Close chat"
+              onClick={onClose}
+            >
+              <VscClose />
+            </button>
+          )}
+        </div>
       </header>
 
       <div className={styles.transcript} ref={transcriptRef} aria-live="polite">

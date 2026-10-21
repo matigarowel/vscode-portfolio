@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { VscComment, VscClose } from 'react-icons/vsc';
 
 import Titlebar from '@/components/Titlebar';
 import Sidebar from '@/components/Sidebar';
@@ -13,7 +14,6 @@ import CommandPalette from '@/components/CommandPalette';
 
 import styles from '@/styles/Layout.module.css';
 import Chat from './Chat';
-import ChatWidget from './ChatWidget';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,6 +25,7 @@ const Layout = ({ children }: LayoutProps) => {
   const [explorerWidth, setExplorerWidth] = useState(240);
   const [chatWidth, setChatWidth] = useState(300);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [isMobileChatOpen, setIsMobileChatOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [chordKey, setChordKey] = useState<string | null>(null);
   const resizeRef = useRef<{
@@ -224,9 +225,21 @@ const Layout = ({ children }: LayoutProps) => {
           onPointerCancel={stopResize}
           onKeyDown={(event) => handleResizeKeyDown(event, 'chat')}
         />
-        <div className={styles.chatPane} style={{ width: chatWidth }}>
-          <Chat />
+        <div
+          className={`${styles.chatPane} ${isMobileChatOpen ? styles.mobileChatOpen : ''}`}
+          style={{ width: chatWidth }}
+        >
+          <Chat onClose={() => setIsMobileChatOpen(false)} />
         </div>
+        <button
+          className={styles.mobileChatButton}
+          type="button"
+          aria-label={isMobileChatOpen ? 'Close chat' : 'Open chat'}
+          aria-expanded={isMobileChatOpen}
+          onClick={() => setIsMobileChatOpen((open) => !open)}
+        >
+          {isMobileChatOpen ? <VscClose /> : <VscComment />}
+        </button>
       </div>
       <Bottombar onTerminalToggle={toggleTerminal} isTerminalOpen={isTerminalOpen} />
       <CommandPalette

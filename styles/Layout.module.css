@@ -21,6 +21,10 @@
   overflow: hidden;
 }
 
+.mobileChatButton {
+  display: none;
+}
+
 .splitter {
   position: relative;
   z-index: 1;
@@ -97,9 +101,48 @@
 
 @media screen and (max-width: 600px) {
   .explorerPane,
-  .chatPane,
   .splitter {
     display: none;
+  }
+
+  .chatPane {
+    display: none;
+  }
+
+  .chatPane.mobileChatOpen {
+    position: fixed;
+    z-index: 20;
+    right: 12px;
+    bottom: calc(98px + env(safe-area-inset-bottom));
+    display: flex;
+    width: min(360px, calc(100vw - 72px)) !important;
+    height: min(70dvh, 600px, calc(100dvh - 150px - env(safe-area-inset-bottom)));
+    max-height: calc(100dvh - 150px - env(safe-area-inset-bottom));
+    border: 1px solid var(--explorer-border);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 45%);
+  }
+
+  .mobileChatButton {
+    position: fixed;
+    z-index: 21;
+    right: 16px;
+    bottom: calc(41px + env(safe-area-inset-bottom));
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid var(--explorer-border);
+    border-radius: 50%;
+    color: var(--text-color);
+    background: var(--accent-color);
+    box-shadow: 0 4px 16px rgb(0 0 0 / 35%);
+    cursor: pointer;
+    font-size: 21px;
+  }
+
+  .mobileChatButton:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 3px;
   }
 
   .content {
