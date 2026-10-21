@@ -80,25 +80,6 @@
   overflow-x: hidden;
 }
 
-.content {
-  scrollbar-width: 10px;
-  scrollbar-color: var(--accent-color);
-}
-
-.content::-webkit-scrollbar {
-  width: 15px;
-}
-
-.content::-webkit-scrollbar-track {
-  background: var(--scrollbar-track-bg);
-  border-left: 1px solid #1e1f29;
-}
-
-.content::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-bg);
-  border-left: 1px solid #1e1f29;
-}
-
 @media screen and (max-width: 600px) {
   .explorerPane,
   .splitter {

@@ -64,18 +64,6 @@
   color: var(--text-color);
 }
 
-.body::-webkit-scrollbar {
-  width: 10px;
-}
-
-.body::-webkit-scrollbar-track {
-  background: var(--scrollbar-track-bg);
-}
-
-.body::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-bg);
-}
-
 .line {
   white-space: pre-wrap;
   word-break: break-all;
