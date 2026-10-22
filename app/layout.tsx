@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description:
       "A full-stack developer building websites that you'd like to use.",
     images: [''],
-    url: 'https://matigabusiness.online,
+    url: 'https://matigabusiness.online',
   },
   twitter: {
     card: 'summary_large_image',
