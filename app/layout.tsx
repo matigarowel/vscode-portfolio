@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     title: "Rowel Matiga's Portfolio",
     description:
       "A full-stack developer building websites that you'd like to use.",
-    images: ['https://imgur.com/4zi5KkQ.png'],
-    url: 'https://vscode-portfolio.vercel.app',
+    images: [''],
+    url: 'https://matigabusiness.online,
   },
   twitter: {
     card: 'summary_large_image',
